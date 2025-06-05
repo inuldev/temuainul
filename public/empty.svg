@@ -37,8 +37,4 @@
     <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow" result="shape"/>
   </filter>
 </defs>
-<<<<<<< HEAD
 </svg>
-=======
-</svg>
->>>>>>> ee0d0be (agents data table)
