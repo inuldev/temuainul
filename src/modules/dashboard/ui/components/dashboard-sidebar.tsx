@@ -49,7 +49,7 @@ export const DashboardSidebar = () => {
     <Sidebar>
       <SidebarHeader className="text-sidebar-accent-foreground">
         <Link href="/" className="flex items-center gap-2 px-2 pt-2">
-          <Image src="./logo.svg" height={34} width={34} alt="Temu.AI" />
+          <Image src="/logo.svg" height={34} width={34} alt="Temu.AI" />
           <p className="text-2xl font-semibold">Temu.AI</p>
         </Link>
       </SidebarHeader>
