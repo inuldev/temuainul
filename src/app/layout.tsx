@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
 import { NuqsAdapter } from "nuqs/adapters/next";
 
 import { Toaster } from "@/components/ui/sonner";
@@ -33,11 +33,12 @@ export const metadata: Metadata = {
     apple: "/logo.svg",
   },
   manifest: "/manifest.json",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({
