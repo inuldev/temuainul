@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { copyToClipboard } from "@/lib/utils";
-import { useToast, toastMessages } from "./use-toast-notifications";
+import { useToast, useToastMessages } from "./use-toast-notifications";
 
 interface UseCopyToClipboardOptions {
   successMessage?: string;
@@ -12,6 +12,7 @@ export const useCopyToClipboard = (options: UseCopyToClipboardOptions = {}) => {
   const [isCopied, setIsCopied] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
+  const toastMessages = useToastMessages();
 
   const {
     successMessage = toastMessages.general.copied,

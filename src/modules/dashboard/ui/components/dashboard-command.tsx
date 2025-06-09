@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import { useTranslations } from "next-intl";
 
 import {
   CommandResponsiveDialog,
@@ -13,12 +14,16 @@ interface Props {
 }
 
 export const DashboardCommand = ({ open, setOpen }: Props) => {
+  const t = useTranslations("navigation");
+
   return (
     <CommandResponsiveDialog open={open} onOpenChange={setOpen}>
-      <CommandInput placeholder="Temukan Ruang atau Agen AI" />
+      <CommandInput
+        placeholder={`Temukan ${t("meetings")} atau ${t("agents")}`}
+      />
       <CommandList>
-        <CommandItem>Ruang Temu</CommandItem>
-        <CommandItem>Agen AI</CommandItem>
+        <CommandItem>{t("meetings")}</CommandItem>
+        <CommandItem>{t("agents")}</CommandItem>
       </CommandList>
     </CommandResponsiveDialog>
   );

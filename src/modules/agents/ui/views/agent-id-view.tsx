@@ -15,7 +15,7 @@ import { useConfirm } from "@/hooks/use-confirm";
 import { ErrorState } from "@/components/error-state";
 import { LoadingState } from "@/components/loading-state";
 import { GeneratedAvatar } from "@/components/generated-avatar";
-import { useToast, toastMessages } from "@/hooks/use-toast-notifications";
+import { useToast, useToastMessages } from "@/hooks/use-toast-notifications";
 
 import { UpdateAgentDialog } from "../components/update-agent-dialog";
 import { AgentIdViewHeader } from "../components/agent-id-view-header";
@@ -29,6 +29,7 @@ export const AgentIdView = ({ agentId }: Props) => {
   const router = useRouter();
   const queryClient = useQueryClient();
   const toast = useToast();
+  const toastMessages = useToastMessages();
   const [updateAgentDialogOpen, setUpdateAgentDialogOpen] = useState(false);
 
   const { data } = useSuspenseQuery(

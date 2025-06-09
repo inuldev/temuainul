@@ -2,15 +2,18 @@
 
 import { useEffect, useState } from "react";
 import { PanelLeftCloseIcon, PanelLeftIcon, SearchIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { useSidebar } from "@/components/ui/sidebar";
+import { LocaleSwitcher } from "@/components/locale-switcher";
 
 import { DashboardCommand } from "./dashboard-command";
 
 export const DashboardNavbar = () => {
   const { state, toggleSidebar, isMobile } = useSidebar();
   const [commandOpen, setCommandOpen] = useState(false);
+  const t = useTranslations("common");
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -43,14 +46,19 @@ export const DashboardNavbar = () => {
           onClick={() => setCommandOpen((open) => !open)}
         >
           <SearchIcon className="size-4" />
-          <span className="hidden sm:inline ml-2">Cari Ruang atau Agen AI</span>
-          <span className="sm:hidden ml-2">Cari...</span>
+          <span className="hidden sm:inline ml-2">
+            {t("search")} Ruang atau Agen AI
+          </span>
+          <span className="sm:hidden ml-2">{t("search")}...</span>
 
           {/* Hide keyboard shortcut on mobile */}
           <kbd className="ml-auto pointer-events-none hidden md:inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground">
             <span className="text-xs">&#8984;</span>K
           </kbd>
         </Button>
+
+        {/* Locale Switcher */}
+        <LocaleSwitcher />
       </nav>
     </>
   );

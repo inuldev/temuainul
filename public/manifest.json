@@ -2,7 +2,7 @@
   "name": "Temu.AI - AI Meeting Assistant",
   "short_name": "Temu.AI",
   "description": "AI Meeting Assistant untuk meeting yang lebih produktif dengan transcription dan summary otomatis",
-  "start_url": "/",
+  "start_url": "/id",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",

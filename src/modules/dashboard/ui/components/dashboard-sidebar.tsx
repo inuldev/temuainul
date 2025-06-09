@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { BotIcon, StarIcon, VideoIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -21,29 +22,32 @@ import {
 
 import { DashboardUserButton } from "./dashboard-user-button";
 
-const firstSection = [
-  {
-    icon: VideoIcon,
-    label: "Ruang",
-    href: "/meetings",
-  },
-  {
-    icon: BotIcon,
-    label: "Agent",
-    href: "/agents",
-  },
-];
-
-const secondSection = [
-  {
-    icon: StarIcon,
-    label: "Premium",
-    href: "/upgrade",
-  },
-];
+// We'll create these sections inside the component to use translations
 
 export const DashboardSidebar = () => {
   const pathname = usePathname();
+  const t = useTranslations("navigation");
+
+  const firstSection = [
+    {
+      icon: VideoIcon,
+      label: t("meetings"),
+      href: "/meetings",
+    },
+    {
+      icon: BotIcon,
+      label: t("agents"),
+      href: "/agents",
+    },
+  ];
+
+  const secondSection = [
+    {
+      icon: StarIcon,
+      label: "Premium",
+      href: "/upgrade",
+    },
+  ];
 
   return (
     <Sidebar>

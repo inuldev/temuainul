@@ -54,6 +54,19 @@ jest.mock("sonner", () => ({
   Toaster: () => null,
 }));
 
+// Mock next-intl
+jest.mock("next-intl", () => ({
+  useTranslations: jest.fn(() => (key) => key),
+  useLocale: jest.fn(() => "id"),
+  NextIntlClientProvider: ({ children }) => children,
+}));
+
+// Mock next-intl/server
+jest.mock("next-intl/server", () => ({
+  getMessages: jest.fn(() => Promise.resolve({})),
+  getRequestConfig: jest.fn(),
+}));
+
 // Mock environment variables
 process.env.NEXT_PUBLIC_STREAM_VIDEO_API_KEY = "test-api-key";
 process.env.DATABASE_URL = "postgresql://test:test@localhost:5432/test";

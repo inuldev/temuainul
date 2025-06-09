@@ -1,6 +1,8 @@
+import { useTranslations } from "next-intl";
 import { AlertCircleIcon, RefreshCwIcon, HomeIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   title?: string;
@@ -14,8 +16,8 @@ interface Props {
 }
 
 export const ErrorState = ({
-  title = "Something went wrong",
-  description = "We encountered an error while loading this content",
+  title,
+  description,
   variant = "default",
   showRetry = false,
   showHome = false,
@@ -23,6 +25,10 @@ export const ErrorState = ({
   onHome,
   className,
 }: Props) => {
+  const t = useTranslations("errors");
+
+  const defaultTitle = title || t("somethingWentWrong");
+  const defaultDescription = description || t("errorLoadingContent");
   const containerClasses = {
     default: "py-4 px-8 flex flex-1 items-center justify-center",
     minimal: "flex items-center justify-center p-4",
@@ -34,7 +40,7 @@ export const ErrorState = ({
       <div className={cn(containerClasses.minimal, className)}>
         <div className="flex items-center gap-x-2 text-destructive">
           <AlertCircleIcon className="size-4" />
-          <span className="text-sm">{title}</span>
+          <span className="text-sm">{defaultTitle}</span>
         </div>
       </div>
     );
@@ -48,8 +54,8 @@ export const ErrorState = ({
         </div>
 
         <div className="flex flex-col gap-y-2 text-center">
-          <h6 className="text-lg font-semibold">{title}</h6>
-          <p className="text-sm text-muted-foreground">{description}</p>
+          <h6 className="text-lg font-semibold">{defaultTitle}</h6>
+          <p className="text-sm text-muted-foreground">{defaultDescription}</p>
         </div>
 
         {(showRetry || showHome) && (
@@ -62,7 +68,7 @@ export const ErrorState = ({
                 className="gap-x-2"
               >
                 <RefreshCwIcon className="size-4" />
-                Try Again
+                {t("tryAgain")}
               </Button>
             )}
 
@@ -74,7 +80,7 @@ export const ErrorState = ({
                 className="gap-x-2"
               >
                 <HomeIcon className="size-4" />
-                Go Home
+                {t("goHome")}
               </Button>
             )}
           </div>

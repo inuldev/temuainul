@@ -1,6 +1,8 @@
 import { Inter } from "next/font/google";
 import type { Metadata, Viewport } from "next";
 import { NuqsAdapter } from "nuqs/adapters/next";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 
 import { Toaster } from "@/components/ui/sonner";
 import { TRPCReactProvider } from "@/trpc/client";
@@ -41,28 +43,38 @@ export const viewport: Viewport = {
   maximumScale: 1,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale } = await params;
+
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
+
   return (
-    <NuqsAdapter>
-      <TRPCReactProvider>
-        <html lang="id" suppressHydrationWarning>
-          <body className={`${inter.className} antialiased`}>
-            <ErrorBoundary>
-              <Toaster
-                position="top-right"
-                expand={false}
-                richColors
-                closeButton
-              />
-              {children}
-            </ErrorBoundary>
-          </body>
-        </html>
-      </TRPCReactProvider>
-    </NuqsAdapter>
+    <html lang={locale} suppressHydrationWarning>
+      <body className={`${inter.className} antialiased`}>
+        <NextIntlClientProvider messages={messages}>
+          <NuqsAdapter>
+            <TRPCReactProvider>
+              <ErrorBoundary>
+                <Toaster
+                  position="top-right"
+                  expand={false}
+                  richColors
+                  closeButton
+                />
+                {children}
+              </ErrorBoundary>
+            </TRPCReactProvider>
+          </NuqsAdapter>
+        </NextIntlClientProvider>
+      </body>
+    </html>
   );
 }

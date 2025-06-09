@@ -5,10 +5,9 @@ describe("ErrorState", () => {
   it("should render default error state", () => {
     render(<ErrorState />);
 
-    expect(screen.getByText("Something went wrong")).toBeInTheDocument();
-    expect(
-      screen.getByText("We encountered an error while loading this content")
-    ).toBeInTheDocument();
+    // Since we're using i18n, the text will be the translation keys
+    expect(screen.getByText("somethingWentWrong")).toBeInTheDocument();
+    expect(screen.getByText("errorLoadingContent")).toBeInTheDocument();
   });
 
   it("should render custom title and description", () => {
@@ -35,7 +34,7 @@ describe("ErrorState", () => {
 
     render(<ErrorState showRetry onRetry={onRetry} />);
 
-    const retryButton = screen.getByText("Try Again");
+    const retryButton = screen.getByText("tryAgain");
     expect(retryButton).toBeInTheDocument();
 
     fireEvent.click(retryButton);
@@ -47,7 +46,7 @@ describe("ErrorState", () => {
 
     render(<ErrorState showHome onHome={onHome} />);
 
-    const homeButton = screen.getByText("Go Home");
+    const homeButton = screen.getByText("goHome");
     expect(homeButton).toBeInTheDocument();
 
     fireEvent.click(homeButton);
@@ -60,8 +59,8 @@ describe("ErrorState", () => {
 
     render(<ErrorState showRetry showHome onRetry={onRetry} onHome={onHome} />);
 
-    expect(screen.getByText("Try Again")).toBeInTheDocument();
-    expect(screen.getByText("Go Home")).toBeInTheDocument();
+    expect(screen.getByText("tryAgain")).toBeInTheDocument();
+    expect(screen.getByText("goHome")).toBeInTheDocument();
   });
 
   it("should not show buttons when handlers are not provided", () => {

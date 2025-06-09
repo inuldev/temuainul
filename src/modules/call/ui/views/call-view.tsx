@@ -1,6 +1,7 @@
 "use client";
 
 import { useSuspenseQuery } from "@tanstack/react-query";
+import { useTranslations } from "next-intl";
 
 import { useTRPC } from "@/trpc/client";
 import { ErrorState } from "@/components/error-state";
@@ -13,6 +14,7 @@ interface Props {
 
 export const CallView = ({ meeetingId }: Props) => {
   const trpc = useTRPC();
+  const t = useTranslations("meetings.completed");
 
   const { data } = useSuspenseQuery(
     trpc.meetings.getOne.queryOptions({ id: meeetingId })
@@ -21,10 +23,7 @@ export const CallView = ({ meeetingId }: Props) => {
   if (data.status === "completed") {
     return (
       <div className="h-screen flex items-center justify-center">
-        <ErrorState
-          title="Pertemuan selesai"
-          description="Terima kasih telah bergabung"
-        />
+        <ErrorState title={t("title")} description={t("description")} />
       </div>
     );
   }

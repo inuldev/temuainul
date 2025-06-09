@@ -1,10 +1,12 @@
 "use client";
 
 import React from "react";
-import { ErrorBoundary as ReactErrorBoundary } from "react-error-boundary";
-import { ErrorState } from "./error-state";
-import { Button } from "./ui/button";
+import { useTranslations } from "next-intl";
 import { RefreshCwIcon, BugIcon } from "lucide-react";
+import { ErrorBoundary as ReactErrorBoundary } from "react-error-boundary";
+
+import { Button } from "./ui/button";
+import { ErrorState } from "./error-state";
 
 interface ErrorFallbackProps {
   error: Error;
@@ -13,6 +15,7 @@ interface ErrorFallbackProps {
 
 const ErrorFallback = ({ error, resetErrorBoundary }: ErrorFallbackProps) => {
   const isDevelopment = process.env.NODE_ENV === "development";
+  const t = useTranslations("errors");
 
   return (
     <div className="min-h-[50vh] flex items-center justify-center p-8">
@@ -22,9 +25,9 @@ const ErrorFallback = ({ error, resetErrorBoundary }: ErrorFallbackProps) => {
         </div>
 
         <div className="flex flex-col gap-y-2 text-center">
-          <h6 className="text-lg font-semibold">Oops! Something went wrong</h6>
+          <h6 className="text-lg font-semibold">{t("somethingWentWrong")}</h6>
           <p className="text-sm text-muted-foreground">
-            We encountered an unexpected error. Please try refreshing the page.
+            {t("unexpectedError")}
           </p>
 
           {isDevelopment && (
@@ -48,7 +51,7 @@ const ErrorFallback = ({ error, resetErrorBoundary }: ErrorFallbackProps) => {
             className="gap-x-2"
           >
             <RefreshCwIcon className="size-4" />
-            Try Again
+            {t("tryAgain")}
           </Button>
 
           <Button
@@ -57,7 +60,7 @@ const ErrorFallback = ({ error, resetErrorBoundary }: ErrorFallbackProps) => {
             onClick={() => (window.location.href = "/")}
             className="gap-x-2"
           >
-            Go Home
+            {t("goHome")}
           </Button>
         </div>
       </div>

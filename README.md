@@ -10,6 +10,7 @@
 - 📊 **AI Summary** - Summary meeting yang intelligent dan terstruktur
 - 🔐 **Authentication** - Sistem auth yang aman dengan Better Auth
 - 📱 **Responsive Design** - UI yang responsif untuk semua device
+- 🌍 **Multi-Language** - Dukungan Bahasa Indonesia dan English
 
 ## 🛠 Tech Stack
 
@@ -21,6 +22,7 @@
 - **Tailwind CSS** - Utility-first CSS framework
 - **Radix UI** - Headless UI components
 - **Shadcn/ui** - Beautiful UI components
+- **Next-Intl** - Internationalization solution
 
 ### Backend
 
@@ -81,6 +83,8 @@ npm run dev
 
 Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
 
+**Note**: Aplikasi akan otomatis redirect ke `/id` (Bahasa Indonesia) sebagai default locale.
+
 ## 🔧 Environment Variables
 
 Buat file `.env.local` dengan variabel berikut:
@@ -129,6 +133,33 @@ src/
 └── trpc/                  # tRPC configuration
 ```
 
+## 🌍 Multi-Language Support
+
+Temu.AI mendukung multi-language dengan next-intl:
+
+### Bahasa yang Didukung
+- 🇮🇩 **Bahasa Indonesia** (default)
+- 🇺🇸 **English**
+
+### Fitur i18n
+- Automatic locale detection dan routing
+- Locale switcher di dashboard
+- Translated UI components dan messages
+- Form validation messages dalam bahasa lokal
+- Toast notifications yang ter-translate
+
+### Menggunakan Translations
+```typescript
+import { useTranslations } from "next-intl";
+
+const MyComponent = () => {
+  const t = useTranslations("common");
+  return <h1>{t("title")}</h1>;
+};
+```
+
+Lihat [Internationalization Guide](docs/INTERNATIONALIZATION.md) untuk detail lengkap.
+
 ## 🎯 Available Scripts
 
 ```bash
@@ -137,6 +168,12 @@ npm run dev              # Start development server
 npm run build           # Build for production
 npm run start           # Start production server
 npm run lint            # Run ESLint
+
+# Testing
+npm run test            # Run all tests
+npm run test:watch      # Run tests in watch mode
+npm run test:coverage   # Run tests with coverage
+npm run test:i18n       # Run i18n specific tests
 
 # Database
 npm run db:push         # Push schema changes to database

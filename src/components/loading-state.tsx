@@ -1,4 +1,5 @@
 import { Loader2Icon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -10,12 +11,16 @@ interface Props {
 }
 
 export const LoadingState = ({
-  title = "Loading...",
-  description = "Please wait while we load your content",
+  title,
+  description,
   size = "md",
   variant = "default",
   className,
 }: Props) => {
+  const t = useTranslations("loading");
+
+  const defaultTitle = title || t("default");
+  const defaultDescription = description || t("pleaseWait");
   const sizeClasses = {
     sm: "size-4",
     md: "size-6",
@@ -35,7 +40,7 @@ export const LoadingState = ({
           <Loader2Icon
             className={cn(sizeClasses[size], "animate-spin text-primary")}
           />
-          <span className="text-sm text-muted-foreground">{title}</span>
+          <span className="text-sm text-muted-foreground">{defaultTitle}</span>
         </div>
       </div>
     );
@@ -48,8 +53,8 @@ export const LoadingState = ({
           className={cn(sizeClasses[size], "animate-spin text-primary")}
         />
         <div className="flex flex-col gap-y-2 text-center max-w-sm">
-          <h6 className="text-lg font-medium">{title}</h6>
-          <p className="text-sm text-muted-foreground">{description}</p>
+          <h6 className="text-lg font-medium">{defaultTitle}</h6>
+          <p className="text-sm text-muted-foreground">{defaultDescription}</p>
         </div>
       </div>
     </div>

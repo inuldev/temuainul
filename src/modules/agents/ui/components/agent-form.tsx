@@ -1,11 +1,12 @@
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useTranslations } from "next-intl";
 
 import { useTRPC } from "@/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { GeneratedAvatar } from "@/components/generated-avatar";
-import { useToast, toastMessages } from "@/hooks/use-toast-notifications";
+import { useToast, useToastMessages } from "@/hooks/use-toast-notifications";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -20,7 +21,7 @@ import {
 } from "@/components/ui/form";
 
 import { AgentGetOne } from "../../types";
-import { agentsInsertSchema } from "../../schemas";
+import { createAgentsInsertSchema } from "../../schemas";
 
 interface AgentFormProps {
   onSuccess?: () => void;
@@ -36,6 +37,8 @@ export const AgentForm = ({
   const trpc = useTRPC();
   const queryClient = useQueryClient();
   const toast = useToast();
+  const toastMessages = useToastMessages();
+  const t = useTranslations("agents");
 
   const createAgent = useMutation(
     trpc.agents.create.mutationOptions({
@@ -78,6 +81,8 @@ export const AgentForm = ({
     })
   );
 
+  const agentsInsertSchema = createAgentsInsertSchema(t);
+
   const form = useForm<z.infer<typeof agentsInsertSchema>>({
     resolver: zodResolver(agentsInsertSchema),
     defaultValues: {
@@ -110,9 +115,9 @@ export const AgentForm = ({
           control={form.control}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Nama</FormLabel>
+              <FormLabel>{t("name")}</FormLabel>
               <FormControl>
-                <Input {...field} placeholder="e.g Guru Matematika" />
+                <Input {...field} placeholder={t("namePlaceholder")} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -123,11 +128,11 @@ export const AgentForm = ({
           control={form.control}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Instruksi</FormLabel>
+              <FormLabel>{t("instructions")}</FormLabel>
               <FormControl>
                 <Textarea
                   {...field}
-                  placeholder="Anda adalah asisten matematika yang membantu menjawab pertanyaan dan membantu tugas dan rumus"
+                  placeholder={t("instructionsPlaceholder")}
                 />
               </FormControl>
               <FormMessage />

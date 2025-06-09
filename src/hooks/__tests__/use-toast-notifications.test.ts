@@ -112,7 +112,7 @@ describe("useToast", () => {
   });
 });
 
-describe("toastMessages", () => {
+describe("toastMessages (deprecated)", () => {
   it("should have agent messages", () => {
     expect(toastMessages.agent.created).toBe("Agent berhasil dibuat");
     expect(toastMessages.agent.createError).toBe("Gagal membuat agent");

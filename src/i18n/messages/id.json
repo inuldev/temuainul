@@ -1,0 +1,138 @@
+{
+  "common": {
+    "loading": "Memuat...",
+    "save": "Simpan",
+    "cancel": "Batal",
+    "delete": "Hapus",
+    "edit": "Edit",
+    "create": "Buat",
+    "search": "Cari",
+    "back": "Kembali",
+    "next": "Selanjutnya",
+    "previous": "Sebelumnya",
+    "close": "Tutup",
+    "confirm": "Konfirmasi",
+    "yes": "Ya",
+    "no": "Tidak",
+    "name": "Nama",
+    "description": "Deskripsi",
+    "actions": "Aksi",
+    "status": "Status",
+    "createdAt": "Dibuat pada",
+    "updatedAt": "Diperbarui pada"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "agents": "AI Agents",
+    "meetings": "Pertemuan",
+    "settings": "Pengaturan",
+    "profile": "Profil",
+    "signOut": "Keluar"
+  },
+  "auth": {
+    "signIn": "Masuk",
+    "signOut": "Keluar",
+    "signUp": "Daftar",
+    "email": "Email",
+    "password": "Kata Sandi",
+    "forgotPassword": "Lupa kata sandi?",
+    "rememberMe": "Ingat saya",
+    "welcomeBack": "Selamat datang kembali",
+    "createAccount": "Buat akun baru"
+  },
+  "agents": {
+    "title": "AI Agents",
+    "subtitle": "Kelola AI agents untuk meeting Anda",
+    "create": "Buat Agent",
+    "edit": "Edit Agent",
+    "delete": "Hapus Agent",
+    "name": "Nama Agent",
+    "instructions": "Instruksi",
+    "namePlaceholder": "e.g Guru Matematika",
+    "instructionsPlaceholder": "Anda adalah asisten matematika yang membantu menjawab pertanyaan dan membantu tugas dan rumus",
+    "empty": {
+      "title": "Belum ada AI agents",
+      "description": "Buat AI agent pertama Anda untuk memulai meeting yang lebih produktif"
+    },
+    "validation": {
+      "nameRequired": "Nama harus diisi",
+      "instructionsRequired": "Instruksi harus diisi"
+    }
+  },
+  "meetings": {
+    "title": "Pertemuan",
+    "subtitle": "Kelola pertemuan dengan AI agents",
+    "create": "Buat Pertemuan",
+    "edit": "Edit Pertemuan",
+    "delete": "Hapus Pertemuan",
+    "join": "Gabung",
+    "leave": "Keluar",
+    "name": "Nama Pertemuan",
+    "agent": "AI Agent",
+    "status": {
+      "upcoming": "Akan Datang",
+      "active": "Aktif",
+      "completed": "Selesai",
+      "cancelled": "Dibatalkan"
+    },
+    "empty": {
+      "title": "Belum ada pertemuan",
+      "description": "Buat pertemuan pertama Anda dengan AI agent"
+    },
+    "cancelled": {
+      "title": "Pertemuan dibatalkan",
+      "description": "Pertemuan telah dibatalkan oleh pemilik pertemuan"
+    },
+    "completed": {
+      "title": "Pertemuan selesai",
+      "description": "Terima kasih telah bergabung"
+    }
+  },
+  "errors": {
+    "somethingWentWrong": "Terjadi kesalahan",
+    "errorLoadingContent": "Terjadi kesalahan saat memuat konten",
+    "tryAgain": "Coba Lagi",
+    "goHome": "Ke Beranda",
+    "networkError": "Koneksi bermasalah, silakan coba lagi",
+    "unexpectedError": "Terjadi kesalahan yang tidak terduga",
+    "sessionExpired": "Sesi Anda telah berakhir"
+  },
+  "toast": {
+    "agent": {
+      "created": "Agent berhasil dibuat",
+      "updated": "Agent berhasil diperbarui",
+      "deleted": "Agent berhasil dihapus",
+      "createError": "Gagal membuat agent",
+      "updateError": "Gagal memperbarui agent",
+      "deleteError": "Gagal menghapus agent"
+    },
+    "meeting": {
+      "created": "Meeting berhasil dibuat",
+      "updated": "Meeting berhasil diperbarui",
+      "deleted": "Meeting berhasil dihapus",
+      "joined": "Berhasil bergabung ke meeting",
+      "left": "Anda telah keluar dari meeting",
+      "createError": "Gagal membuat meeting",
+      "updateError": "Gagal memperbarui meeting",
+      "deleteError": "Gagal menghapus meeting",
+      "joinError": "Gagal bergabung ke meeting"
+    },
+    "auth": {
+      "signInSuccess": "Berhasil masuk",
+      "signOutSuccess": "Berhasil keluar",
+      "signInError": "Gagal masuk",
+      "signOutError": "Gagal keluar"
+    },
+    "general": {
+      "saved": "Data berhasil disimpan",
+      "copied": "Berhasil disalin ke clipboard",
+      "saveError": "Gagal menyimpan data",
+      "copyError": "Gagal menyalin ke clipboard"
+    }
+  },
+  "loading": {
+    "default": "Memuat...",
+    "pleaseWait": "Mohon tunggu sebentar",
+    "loadingContent": "Memuat konten Anda"
+  }
+}

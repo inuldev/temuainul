@@ -10,10 +10,9 @@ describe("LoadingState", () => {
   it("should render default loading state", () => {
     render(<LoadingState />);
 
-    expect(screen.getByText("Loading...")).toBeInTheDocument();
-    expect(
-      screen.getByText("Please wait while we load your content")
-    ).toBeInTheDocument();
+    // Since we're using i18n, the text will be the translation keys
+    expect(screen.getByText("default")).toBeInTheDocument();
+    expect(screen.getByText("pleaseWait")).toBeInTheDocument();
   });
 
   it("should render custom title and description", () => {

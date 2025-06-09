@@ -1,0 +1,138 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "search": "Search",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No",
+    "name": "Name",
+    "description": "Description",
+    "actions": "Actions",
+    "status": "Status",
+    "createdAt": "Created at",
+    "updatedAt": "Updated at"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "agents": "AI Agents",
+    "meetings": "Meetings",
+    "settings": "Settings",
+    "profile": "Profile",
+    "signOut": "Sign Out"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "signUp": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "rememberMe": "Remember me",
+    "welcomeBack": "Welcome back",
+    "createAccount": "Create new account"
+  },
+  "agents": {
+    "title": "AI Agents",
+    "subtitle": "Manage AI agents for your meetings",
+    "create": "Create Agent",
+    "edit": "Edit Agent",
+    "delete": "Delete Agent",
+    "name": "Agent Name",
+    "instructions": "Instructions",
+    "namePlaceholder": "e.g Math Teacher",
+    "instructionsPlaceholder": "You are a math assistant that helps answer questions and assists with tasks and formulas",
+    "empty": {
+      "title": "No AI agents yet",
+      "description": "Create your first AI agent to start more productive meetings"
+    },
+    "validation": {
+      "nameRequired": "Name is required",
+      "instructionsRequired": "Instructions are required"
+    }
+  },
+  "meetings": {
+    "title": "Meetings",
+    "subtitle": "Manage meetings with AI agents",
+    "create": "Create Meeting",
+    "edit": "Edit Meeting",
+    "delete": "Delete Meeting",
+    "join": "Join",
+    "leave": "Leave",
+    "name": "Meeting Name",
+    "agent": "AI Agent",
+    "status": {
+      "upcoming": "Upcoming",
+      "active": "Active",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "empty": {
+      "title": "No meetings yet",
+      "description": "Create your first meeting with an AI agent"
+    },
+    "cancelled": {
+      "title": "Meeting cancelled",
+      "description": "The meeting has been cancelled by the meeting owner"
+    },
+    "completed": {
+      "title": "Meeting completed",
+      "description": "Thank you for joining"
+    }
+  },
+  "errors": {
+    "somethingWentWrong": "Something went wrong",
+    "errorLoadingContent": "We encountered an error while loading this content",
+    "tryAgain": "Try Again",
+    "goHome": "Go Home",
+    "networkError": "Network error, please try again",
+    "unexpectedError": "An unexpected error occurred",
+    "sessionExpired": "Your session has expired"
+  },
+  "toast": {
+    "agent": {
+      "created": "Agent created successfully",
+      "updated": "Agent updated successfully",
+      "deleted": "Agent deleted successfully",
+      "createError": "Failed to create agent",
+      "updateError": "Failed to update agent",
+      "deleteError": "Failed to delete agent"
+    },
+    "meeting": {
+      "created": "Meeting created successfully",
+      "updated": "Meeting updated successfully",
+      "deleted": "Meeting deleted successfully",
+      "joined": "Successfully joined meeting",
+      "left": "You have left the meeting",
+      "createError": "Failed to create meeting",
+      "updateError": "Failed to update meeting",
+      "deleteError": "Failed to delete meeting",
+      "joinError": "Failed to join meeting"
+    },
+    "auth": {
+      "signInSuccess": "Signed in successfully",
+      "signOutSuccess": "Signed out successfully",
+      "signInError": "Failed to sign in",
+      "signOutError": "Failed to sign out"
+    },
+    "general": {
+      "saved": "Data saved successfully",
+      "copied": "Copied to clipboard successfully",
+      "saveError": "Failed to save data",
+      "copyError": "Failed to copy to clipboard"
+    }
+  },
+  "loading": {
+    "default": "Loading...",
+    "pleaseWait": "Please wait a moment",
+    "loadingContent": "Loading your content"
+  }
+}

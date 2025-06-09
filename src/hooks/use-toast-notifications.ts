@@ -1,4 +1,5 @@
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 interface ToastOptions {
   title?: string;
@@ -104,7 +105,46 @@ export const useToast = () => {
   };
 };
 
-// Predefined toast messages for common actions
+// Hook for internationalized toast messages
+export const useToastMessages = () => {
+  const t = useTranslations("toast");
+
+  return {
+    agent: {
+      created: t("agent.created"),
+      updated: t("agent.updated"),
+      deleted: t("agent.deleted"),
+      createError: t("agent.createError"),
+      updateError: t("agent.updateError"),
+      deleteError: t("agent.deleteError"),
+    },
+    meeting: {
+      created: t("meeting.created"),
+      updated: t("meeting.updated"),
+      deleted: t("meeting.deleted"),
+      joined: t("meeting.joined"),
+      left: t("meeting.left"),
+      createError: t("meeting.createError"),
+      updateError: t("meeting.updateError"),
+      deleteError: t("meeting.deleteError"),
+      joinError: t("meeting.joinError"),
+    },
+    auth: {
+      signInSuccess: t("auth.signInSuccess"),
+      signOutSuccess: t("auth.signOutSuccess"),
+      signInError: t("auth.signInError"),
+      signOutError: t("auth.signOutError"),
+    },
+    general: {
+      saved: t("general.saved"),
+      copied: t("general.copied"),
+      saveError: t("general.saveError"),
+      copyError: t("general.copyError"),
+    },
+  };
+};
+
+// Predefined toast messages for common actions (deprecated - use useToastMessages instead)
 export const toastMessages = {
   // Agent actions
   agent: {

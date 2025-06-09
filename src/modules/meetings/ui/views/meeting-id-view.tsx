@@ -12,7 +12,7 @@ import { useTRPC } from "@/trpc/client";
 import { useConfirm } from "@/hooks/use-confirm";
 import { ErrorState } from "@/components/error-state";
 import { LoadingState } from "@/components/loading-state";
-import { useToast, toastMessages } from "@/hooks/use-toast-notifications";
+import { useToast, useToastMessages } from "@/hooks/use-toast-notifications";
 
 import { ActiveState } from "../components/active-state";
 import { UpcomingState } from "../components/upcoming-state";
@@ -31,6 +31,7 @@ export const MeetingIdView = ({ meetingId }: Props) => {
   const router = useRouter();
   const queryClient = useQueryClient();
   const toast = useToast();
+  const toastMessages = useToastMessages();
   const [UpdateMeetingDialogOpen, setUpdateMeetingDialogOpen] = useState(false);
 
   const [RemoveConfirmation, confirmRemove] = useConfirm(
