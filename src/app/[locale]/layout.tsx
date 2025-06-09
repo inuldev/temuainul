@@ -1,5 +1,7 @@
-import { notFound } from "next/navigation";
 import { locales } from "@/i18n/config";
+import { redirect } from "next/navigation";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 
 interface Props {
   children: React.ReactNode;
@@ -11,10 +13,18 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   // Validate that the incoming `locale` parameter is valid
   if (!locales.includes(locale as (typeof locales)[number])) {
-    notFound();
+    // Redirect to default locale instead of notFound
+    redirect("/id");
   }
 
-  return children;
+  // Providing all messages to the client side
+  const messages = await getMessages();
+
+  return (
+    <NextIntlClientProvider messages={messages}>
+      {children}
+    </NextIntlClientProvider>
+  );
 }
 
 export function generateStaticParams() {
