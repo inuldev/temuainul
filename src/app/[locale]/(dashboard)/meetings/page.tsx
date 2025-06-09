@@ -17,17 +17,19 @@ import {
 
 interface Props {
   searchParams: Promise<SearchParams>;
+  params: Promise<{ locale: string }>;
 }
 
-const Page = async ({ searchParams }: Props) => {
+const Page = async ({ searchParams, params }: Props) => {
   const filters = await loadSearchParams(searchParams);
+  const { locale } = await params;
 
   const session = await auth.api.getSession({
     headers: await headers(),
   });
 
   if (!session) {
-    redirect("/sign-in");
+    redirect(`/${locale}/sign-in`);
   }
 
   const queryClient = getQueryClient();

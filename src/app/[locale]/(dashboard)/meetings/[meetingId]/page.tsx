@@ -15,18 +15,19 @@ import {
 interface Props {
   params: Promise<{
     meetingId: string;
+    locale: string;
   }>;
 }
 
 const Page = async ({ params }: Props) => {
-  const { meetingId } = await params;
+  const { meetingId, locale } = await params;
 
   const session = await auth.api.getSession({
     headers: await headers(),
   });
 
   if (!session) {
-    redirect("/sign-in");
+    redirect(`/${locale}/sign-in`);
   }
 
   const queryClient = getQueryClient();

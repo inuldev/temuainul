@@ -4,13 +4,19 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { HomeView } from "@/modules/home/ui/views/home-view";
 
-const Page = async () => {
+interface Props {
+  params: Promise<{ locale: string }>;
+}
+
+const Page = async ({ params }: Props) => {
+  const { locale } = await params;
+
   const session = await auth.api.getSession({
     headers: await headers(),
   });
 
   if (!session) {
-    redirect("/sign-in");
+    redirect(`/${locale}/sign-in`);
   }
 
   return <HomeView />;

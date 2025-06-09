@@ -4,13 +4,19 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { SignUpView } from "@/modules/auth/ui/views/sign-up-view";
 
-const Page = async () => {
+interface Props {
+  params: Promise<{ locale: string }>;
+}
+
+const Page = async ({ params }: Props) => {
+  const { locale } = await params;
+
   const session = await auth.api.getSession({
     headers: await headers(),
   });
 
   if (!!session) {
-    redirect("/");
+    redirect(`/${locale}/dashboard`);
   }
 
   return <SignUpView />;
