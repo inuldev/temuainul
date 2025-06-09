@@ -1,11 +1,11 @@
 import { z } from "zod";
-import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { useTRPC } from "@/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { GeneratedAvatar } from "@/components/generated-avatar";
+import { useToast, toastMessages } from "@/hooks/use-toast-notifications";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -35,6 +35,7 @@ export const AgentForm = ({
 }: AgentFormProps) => {
   const trpc = useTRPC();
   const queryClient = useQueryClient();
+  const toast = useToast();
 
   const createAgent = useMutation(
     trpc.agents.create.mutationOptions({
@@ -43,12 +44,13 @@ export const AgentForm = ({
           trpc.agents.getMany.queryOptions({})
         );
 
+        toast.success(toastMessages.agent.created);
         // TODO: invalidate free tier usage
         onSuccess?.();
       },
 
       onError: (error) => {
-        toast.error(error.message);
+        toast.error(error.message || toastMessages.agent.createError);
         // TODO: check if error code is "forbidden" redirect to "/upgrade"
       },
     })
@@ -66,10 +68,11 @@ export const AgentForm = ({
             trpc.agents.getOne.queryOptions({ id: initialValues.id })
           );
         }
+        toast.success(toastMessages.agent.updated);
         onSuccess?.();
       },
       onError: (error) => {
-        toast.error(error.message);
+        toast.error(error.message || toastMessages.agent.updateError);
         // TODO: check if error code is "forbidden" redirect to "/upgrade"
       },
     })

@@ -1,6 +1,5 @@
 "use client";
 
-import { toast } from "sonner";
 import { useState } from "react";
 import { useTRPC } from "@/trpc/client";
 import { VideoIcon } from "lucide-react";
@@ -16,6 +15,7 @@ import { useConfirm } from "@/hooks/use-confirm";
 import { ErrorState } from "@/components/error-state";
 import { LoadingState } from "@/components/loading-state";
 import { GeneratedAvatar } from "@/components/generated-avatar";
+import { useToast, toastMessages } from "@/hooks/use-toast-notifications";
 
 import { UpdateAgentDialog } from "../components/update-agent-dialog";
 import { AgentIdViewHeader } from "../components/agent-id-view-header";
@@ -28,6 +28,7 @@ export const AgentIdView = ({ agentId }: Props) => {
   const trpc = useTRPC();
   const router = useRouter();
   const queryClient = useQueryClient();
+  const toast = useToast();
   const [updateAgentDialogOpen, setUpdateAgentDialogOpen] = useState(false);
 
   const { data } = useSuspenseQuery(
@@ -40,11 +41,12 @@ export const AgentIdView = ({ agentId }: Props) => {
         await queryClient.invalidateQueries(
           trpc.agents.getMany.queryOptions({})
         );
+        toast.success(toastMessages.agent.deleted);
         // TODO: invalidate free tier usage
         router.push("/agents");
       },
       onError: (error) => {
-        toast.error(error.message);
+        toast.error(error.message || toastMessages.agent.deleteError);
       },
     })
   );

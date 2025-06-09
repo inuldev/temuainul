@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { toast } from "sonner";
 import { useState } from "react";
 import { useTRPC } from "@/trpc/client";
 import { useForm } from "react-hook-form";
@@ -10,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { CommandSelect } from "@/components/command-select";
 import { GeneratedAvatar } from "@/components/generated-avatar";
+import { useToast, toastMessages } from "@/hooks/use-toast-notifications";
 import { NewAgentDialog } from "@/modules/agents/ui/components/new-agent-dialog";
 import {
   Form,
@@ -37,6 +37,7 @@ export const MeetingForm = ({
 }: MeetingFormProps) => {
   const trpc = useTRPC();
   const queryClient = useQueryClient();
+  const toast = useToast();
   const [agentSearch, setAgentSearch] = useState("");
   const [openNewAgentDialog, setOpenNewAgentDialog] = useState(false);
 
@@ -54,12 +55,13 @@ export const MeetingForm = ({
           trpc.meetings.getMany.queryOptions({})
         );
 
+        toast.success(toastMessages.meeting.created);
         // TODO: invalidate free tier usage
 
         onSuccess?.(data.id);
       },
       onError: (error) => {
-        toast.error(error.message);
+        toast.error(error.message || toastMessages.meeting.createError);
 
         // TODO: check if error code is "forbidden", redirect to "/upgrade"
       },
@@ -77,10 +79,11 @@ export const MeetingForm = ({
             trpc.meetings.getOne.queryOptions({ id: initialValues.id })
           );
         }
+        toast.success(toastMessages.meeting.updated);
         onSuccess?.();
       },
       onError: (error) => {
-        toast.error(error.message);
+        toast.error(error.message || toastMessages.meeting.updateError);
 
         // TODO: check if error code is "forbidden", redirect to "/upgrade"
       },
