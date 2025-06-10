@@ -22,6 +22,7 @@
       "@/*": ["./src/*"]
     }
   },
+<<<<<<< HEAD
   "include": [
     "next-env.d.ts",
     "**/*.ts",
@@ -29,5 +30,8 @@
     ".next/types/**/*.ts",
     "src/types/**/*.d.ts"
   ],
+=======
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+>>>>>>> 78fdcc1 (prepare for part 2)
   "exclude": ["node_modules"]
 }

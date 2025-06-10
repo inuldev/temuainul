@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 import { Inter } from "next/font/google";
 import type { Metadata, Viewport } from "next";
+=======
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+>>>>>>> 78fdcc1 (prepare for part 2)
 import { NuqsAdapter } from "nuqs/adapters/next";
 
 import { Toaster } from "@/components/ui/sonner";
 import { TRPCReactProvider } from "@/trpc/client";
+<<<<<<< HEAD
 import { ErrorBoundary } from "@/components/error-boundary";
+=======
+>>>>>>> 78fdcc1 (prepare for part 2)
 
 import "./globals.css";
 
@@ -13,6 +21,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+<<<<<<< HEAD
   title: "Temu.AI - AI Meeting Assistant",
   description:
     "Temu.AI adalah aplikasi AI Meeting Assistant untuk membantu bisnis Anda dengan meeting yang lebih produktif",
@@ -39,6 +48,13 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
+=======
+  title: "Temu.AI",
+  description: "Temu.AI adalah aplikasi Agen AI untuk membantu bisnis Anda",
+  icons: {
+    icon: "/logo.svg",
+  },
+>>>>>>> 78fdcc1 (prepare for part 2)
 };
 
 export default function RootLayout({
@@ -47,6 +63,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+<<<<<<< HEAD
     <html suppressHydrationWarning>
       <body className={`${inter.className} antialiased`}>
         <NuqsAdapter>
@@ -64,5 +81,17 @@ export default function RootLayout({
         </NuqsAdapter>
       </body>
     </html>
+=======
+    <NuqsAdapter>
+      <TRPCReactProvider>
+        <html lang="id" suppressHydrationWarning>
+          <body className={`${inter.className} antialiased`}>
+            <Toaster />
+            {children}
+          </body>
+        </html>
+      </TRPCReactProvider>
+    </NuqsAdapter>
+>>>>>>> 78fdcc1 (prepare for part 2)
   );
 }

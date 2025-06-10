@@ -7,10 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+<<<<<<< HEAD
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:i18n": "jest --testPathPattern=i18n",
+=======
+>>>>>>> 78fdcc1 (prepare for part 2)
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "dev:webhook": "ngrok http --url=prime-instantly-cod.ngrok-free.app 3000"
@@ -52,12 +55,19 @@
     "lucide-react": "^0.511.0",
     "nanoid": "^5.1.5",
     "next": "15.3.3",
+<<<<<<< HEAD
     "next-intl": "^4.1.0",
+=======
+>>>>>>> 78fdcc1 (prepare for part 2)
     "next-themes": "^0.4.6",
     "nuqs": "^2.4.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-error-boundary": "^6.0.0",
+<<<<<<< HEAD
+=======
+    "react-highlight-words": "^0.21.0",
+>>>>>>> 78fdcc1 (prepare for part 2)
     "react-hook-form": "^7.57.0",
     "react-icons": "^5.5.0",
     "react-markdown": "^10.1.0",
@@ -70,20 +80,27 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+<<<<<<< HEAD
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/humanize-duration": "^3.27.4",
     "@types/jest": "^29.5.14",
+=======
+    "@types/humanize-duration": "^3.27.4",
+>>>>>>> 78fdcc1 (prepare for part 2)
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "drizzle-kit": "^0.31.1",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
+<<<<<<< HEAD
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
+=======
+>>>>>>> 78fdcc1 (prepare for part 2)
     "tailwindcss": "^4",
     "tsx": "^4.19.4",
     "tw-animate-css": "^1.3.3",

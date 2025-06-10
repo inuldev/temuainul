@@ -1,4 +1,8 @@
 import { z } from "zod";
+<<<<<<< HEAD
+=======
+import { toast } from "sonner";
+>>>>>>> 78fdcc1 (prepare for part 2)
 import { useState } from "react";
 import { useTRPC } from "@/trpc/client";
 import { useForm } from "react-hook-form";
@@ -9,7 +13,10 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { CommandSelect } from "@/components/command-select";
 import { GeneratedAvatar } from "@/components/generated-avatar";
+<<<<<<< HEAD
 import { useToast, toastMessages } from "@/hooks/use-toast-notifications";
+=======
+>>>>>>> 78fdcc1 (prepare for part 2)
 import { NewAgentDialog } from "@/modules/agents/ui/components/new-agent-dialog";
 import {
   Form,
@@ -37,7 +44,10 @@ export const MeetingForm = ({
 }: MeetingFormProps) => {
   const trpc = useTRPC();
   const queryClient = useQueryClient();
+<<<<<<< HEAD
   const toast = useToast();
+=======
+>>>>>>> 78fdcc1 (prepare for part 2)
   const [agentSearch, setAgentSearch] = useState("");
   const [openNewAgentDialog, setOpenNewAgentDialog] = useState(false);
 
@@ -55,13 +65,20 @@ export const MeetingForm = ({
           trpc.meetings.getMany.queryOptions({})
         );
 
+<<<<<<< HEAD
         toast.success(toastMessages.meeting.created);
+=======
+>>>>>>> 78fdcc1 (prepare for part 2)
         // TODO: invalidate free tier usage
 
         onSuccess?.(data.id);
       },
       onError: (error) => {
+<<<<<<< HEAD
         toast.error(error.message || toastMessages.meeting.createError);
+=======
+        toast.error(error.message);
+>>>>>>> 78fdcc1 (prepare for part 2)
 
         // TODO: check if error code is "forbidden", redirect to "/upgrade"
       },
@@ -79,11 +96,18 @@ export const MeetingForm = ({
             trpc.meetings.getOne.queryOptions({ id: initialValues.id })
           );
         }
+<<<<<<< HEAD
         toast.success(toastMessages.meeting.updated);
         onSuccess?.();
       },
       onError: (error) => {
         toast.error(error.message || toastMessages.meeting.updateError);
+=======
+        onSuccess?.();
+      },
+      onError: (error) => {
+        toast.error(error.message);
+>>>>>>> 78fdcc1 (prepare for part 2)
 
         // TODO: check if error code is "forbidden", redirect to "/upgrade"
       },

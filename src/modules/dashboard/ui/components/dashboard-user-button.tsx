@@ -1,5 +1,8 @@
 import { useRouter } from "next/navigation";
+<<<<<<< HEAD
 import { useTranslations } from "next-intl";
+=======
+>>>>>>> 78fdcc1 (prepare for part 2)
 import { ChevronDownIcon, CreditCardIcon, LogOutIcon } from "lucide-react";
 
 import { authClient } from "@/lib/auth-client";
@@ -30,7 +33,10 @@ export const DashboardUserButton = () => {
   const router = useRouter();
   const isMobile = useIsMobile();
   const { data, isPending } = authClient.useSession();
+<<<<<<< HEAD
   const t = useTranslations("navigation");
+=======
+>>>>>>> 78fdcc1 (prepare for part 2)
 
   const onLogout = () => {
     authClient.signOut({
@@ -79,7 +85,11 @@ export const DashboardUserButton = () => {
             </Button>
             <Button variant="outline" onClick={onLogout}>
               <LogOutIcon className="size-4 text-black" />
+<<<<<<< HEAD
               {t("signOut")}
+=======
+              Keluar
+>>>>>>> 78fdcc1 (prepare for part 2)
             </Button>
           </DrawerFooter>
         </DrawerContent>
@@ -125,7 +135,11 @@ export const DashboardUserButton = () => {
           onClick={onLogout}
           className="cursor-pointer flex items-center justify-between"
         >
+<<<<<<< HEAD
           {t("signOut")}
+=======
+          Keluar
+>>>>>>> 78fdcc1 (prepare for part 2)
           <LogOutIcon className="size-4" />
         </DropdownMenuItem>
       </DropdownMenuContent>

@@ -13,6 +13,7 @@ export function formatDuration(seconds: number) {
     units: ["h", "m", "s"],
   });
 }
+<<<<<<< HEAD
 
 export async function copyToClipboard(text: string): Promise<boolean> {
   try {
@@ -109,3 +110,5 @@ export function truncateText(text: string, maxLength: number): string {
   if (text.length <= maxLength) return text;
   return text.substring(0, maxLength) + "...";
 }
+=======
+>>>>>>> 78fdcc1 (prepare for part 2)

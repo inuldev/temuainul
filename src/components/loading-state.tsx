@@ -1,4 +1,5 @@
 import { Loader2Icon } from "lucide-react";
+<<<<<<< HEAD
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
@@ -55,11 +56,28 @@ export const LoadingState = ({
         <div className="flex flex-col gap-y-2 text-center max-w-sm">
           <h6 className="text-lg font-medium">{defaultTitle}</h6>
           <p className="text-sm text-muted-foreground">{defaultDescription}</p>
+=======
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+export const LoadingState = ({ title, description }: Props) => {
+  return (
+    <div className="py-4 px-8 flex flex-1 items-center justify-center">
+      <div className="flex flex-col items-center justify-center gap-y-6 bg-background rounded-lg p-10 shadow-sm">
+        <Loader2Icon className="size-6 animate-spin text-primary" />
+        <div className="flex flex-col gap-y-2 text-center">
+          <h6 className="text-lg font-medium">{title}</h6>
+          <p className="text-sm">{description}</p>
+>>>>>>> 78fdcc1 (prepare for part 2)
         </div>
       </div>
     </div>
   );
 };
+<<<<<<< HEAD
 
 // Skeleton components untuk loading states yang lebih specific
 export const TableSkeleton = ({ rows = 5 }: { rows?: number }) => {
@@ -95,3 +113,5 @@ export const ButtonSkeleton = ({ className }: { className?: string }) => {
     <div className={cn("h-9 w-20 bg-muted rounded animate-pulse", className)} />
   );
 };
+=======
+>>>>>>> 78fdcc1 (prepare for part 2)

@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+<<<<<<< HEAD
 // Create a function that returns the schema with translations
 export const createAgentsInsertSchema = (t: (key: string) => string) =>
   z.object({
@@ -12,6 +13,11 @@ export const createAgentsInsertSchema = (t: (key: string) => string) =>
 // Default schema for backward compatibility
 export const agentsInsertSchema = z.object({
   name: z.string().min(1, { message: "Nama harus diisi" }),
+=======
+export const agentsInsertSchema = z.object({
+  name: z.string().min(1, { message: "Nama harus diisi" }),
+
+>>>>>>> 78fdcc1 (prepare for part 2)
   instructions: z.string().min(1, { message: "Instruksi harus diisi" }),
 });
 
