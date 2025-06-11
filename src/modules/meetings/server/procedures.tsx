@@ -1,5 +1,4 @@
 import { z } from "zod";
-<<<<<<< HEAD
 import { TRPCError } from "@trpc/server";
 import { and, count, desc, eq, getTableColumns, ilike, sql } from "drizzle-orm";
 
@@ -7,25 +6,6 @@ import { db } from "@/db";
 import { agents, meetings } from "@/db/schema";
 import { streamVideo } from "@/lib/stream-video";
 import { generateAvatarUri } from "@/lib/avatar";
-=======
-import JSONL from "jsonl-parse-stringify";
-import { TRPCError } from "@trpc/server";
-import {
-  and,
-  count,
-  desc,
-  eq,
-  getTableColumns,
-  ilike,
-  inArray,
-  sql,
-} from "drizzle-orm";
-
-import { db } from "@/db";
-import { streamVideo } from "@/lib/stream-video";
-import { generateAvatarUri } from "@/lib/avatar";
-import { agents, meetings, user } from "@/db/schema";
->>>>>>> 78fdcc1 (prepare for part 2)
 import { createTRPCRouter, protectedProcedure } from "@/trpc/init";
 import {
   DEFAULT_PAGE,
@@ -34,107 +14,10 @@ import {
   MIN_PAGE_SIZE,
 } from "@/constants";
 
-<<<<<<< HEAD
 import { MeetingStatus } from "../types";
 import { meetingsInsertSchema, meetingsUpdateSchema } from "../schemas";
 
 export const meetingsRouter = createTRPCRouter({
-=======
-import { MeetingStatus, StreamTranscriptItem } from "../types";
-import { meetingsInsertSchema, meetingsUpdateSchema } from "../schemas";
-
-export const meetingsRouter = createTRPCRouter({
-  getTranscript: protectedProcedure
-    .input(z.object({ id: z.string() }))
-    .query(async ({ input, ctx }) => {
-      const [existingMeeting] = await db
-        .select()
-        .from(meetings)
-        .where(
-          and(eq(meetings.id, input.id), eq(meetings.userId, ctx.auth.user.id))
-        );
-
-      if (!existingMeeting) {
-        throw new TRPCError({
-          code: "NOT_FOUND",
-          message: "Meeting tidak ditemukan",
-        });
-      }
-
-      if (!existingMeeting.transcriptUrl) {
-        return [];
-      }
-
-      const transcript = await fetch(existingMeeting.transcriptUrl)
-        .then((res) => res.text())
-        .then((text) => JSONL.parse<StreamTranscriptItem>(text))
-        .catch(() => {
-          return [];
-        });
-
-      const speakerIds = [
-        ...new Set(transcript.map((item) => item.speaker_id)),
-      ];
-
-      const userSpeakers = await db
-        .select()
-        .from(user)
-        .where(inArray(user.id, speakerIds))
-        .then((users) =>
-          users.map((user) => ({
-            ...user,
-            image:
-              user.image ??
-              generateAvatarUri({ seed: user.name, variant: "initials" }),
-          }))
-        );
-
-      const agentSpeakers = await db
-        .select()
-        .from(agents)
-        .where(inArray(agents.id, speakerIds))
-        .then((agents) =>
-          agents.map((agent) => ({
-            ...agent,
-            image: generateAvatarUri({
-              seed: agent.name,
-              variant: "botttsNeutral",
-            }),
-          }))
-        );
-
-      const speakers = [...userSpeakers, ...agentSpeakers];
-      const transcriptWithSpeakers = transcript.map((item) => {
-        const speaker = speakers.find(
-          (speaker) => speaker.id === item.speaker_id
-        );
-
-        if (!speaker) {
-          return {
-            ...item,
-            user: {
-              name: "unknown",
-              image: generateAvatarUri({
-                seed: "unknown",
-                variant: "initials",
-              }),
-            },
-          };
-        }
-
-        return {
-          ...item,
-          user: {
-            name: speaker.name,
-            image: speaker.image,
-          },
-        };
-      });
-
-      return transcriptWithSpeakers;
-    }),
-
->>>>>>> 78fdcc1 (prepare for part 2)
   generateToken: protectedProcedure.mutation(async ({ ctx }) => {
     await streamVideo.upsertUsers([
       {

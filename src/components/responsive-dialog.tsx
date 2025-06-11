@@ -1,37 +1,21 @@
 "use client";
 
-<<<<<<< HEAD
-import * as React from "react";
-
-=======
->>>>>>> 78fdcc1 (prepare for part 2)
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
   Drawer,
   DrawerContent,
   DrawerDescription,
-<<<<<<< HEAD
-  DrawerHeader,
-  DrawerTitle,
-=======
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
->>>>>>> 78fdcc1 (prepare for part 2)
 } from "@/components/ui/drawer";
 import {
   Dialog,
   DialogContent,
-<<<<<<< HEAD
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-=======
   DialogHeader,
   DialogTitle,
   DialogDescription,
->>>>>>> 78fdcc1 (prepare for part 2)
 } from "@/components/ui/dialog";
 
 interface ResponsiveDialogProps {
