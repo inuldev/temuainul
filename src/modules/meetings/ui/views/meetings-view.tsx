@@ -31,11 +31,13 @@ export const MeetingsView = () => {
         columns={columns}
         onRowClick={(row) => router.push(`/meetings/${row.id}`)}
       />
-      <DataPagination
-        page={filters.page}
-        totalPages={data.totalPages}
-        onPageChange={(page) => setFilters({ page })}
-      />
+      {data.totalPages > 1 && (
+        <DataPagination
+          page={filters.page}
+          totalPages={data.totalPages}
+          onPageChange={(page) => setFilters({ page })}
+        />
+      )}
       {data.items.length === 0 && (
         <EmptyState
           title="Buat pertemuan baru"

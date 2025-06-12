@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { format } from "date-fns";
 import Markdown from "react-markdown";
 import {
   BookOpenTextIcon,
@@ -9,8 +8,8 @@ import {
   SparklesIcon,
 } from "lucide-react";
 
-import { formatDuration } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
+import { formatDuration, formatDateLong } from "@/lib/utils";
 import { GeneratedAvatar } from "@/components/generated-avatar";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -94,7 +93,7 @@ export const CompletedState = ({ data }: Props) => {
                   />
                   {data.agent.name}
                 </Link>{" "}
-                <p>{data.startedAt ? format(data.startedAt, "PPP") : ""}</p>
+                <p>{data.startedAt ? formatDateLong(data.startedAt) : ""}</p>
               </div>
               <div className="flex gap-x-2 items-center">
                 <SparklesIcon className="size-4" />
@@ -105,7 +104,9 @@ export const CompletedState = ({ data }: Props) => {
                 className="flex items-center gap-x-2 [&>svg]:size-4"
               >
                 <ClockFadingIcon className="text-blue-700" />
-                {data.duration ? formatDuration(data.duration) : "No Duration"}
+                {data.duration
+                  ? formatDuration(data.duration)
+                  : "Tidak ada durasi"}
               </Badge>
               <div>
                 <Markdown

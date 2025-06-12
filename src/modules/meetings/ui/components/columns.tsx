@@ -1,7 +1,5 @@
 "use client";
 
-import { format } from "date-fns";
-import humanizeDuration from "humanize-duration";
 import { ColumnDef } from "@tanstack/react-table";
 import {
   CornerDownRightIcon,
@@ -12,19 +10,11 @@ import {
   ClockArrowUpIcon,
 } from "lucide-react";
 
-import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { GeneratedAvatar } from "@/components/generated-avatar";
+import { cn, formatDateShort, formatDuration } from "@/lib/utils";
 
 import { MeetingGetMany } from "../../types";
-
-function formatDuration(seconds: number) {
-  return humanizeDuration(seconds * 1000, {
-    largest: 1,
-    round: true,
-    units: ["h", "m", "s"],
-  });
-}
 
 const statusIconMap = {
   upcoming: ClockArrowUpIcon,
@@ -63,7 +53,7 @@ export const columns: ColumnDef<MeetingGetMany[number]>[] = [
           />
           <span className="text-sm text-muted-foreground">
             {row.original.startedAt
-              ? format(row.original.startedAt, "MM d")
+              ? formatDateShort(row.original.startedAt)
               : ""}
           </span>
         </div>
@@ -106,7 +96,7 @@ export const columns: ColumnDef<MeetingGetMany[number]>[] = [
         <ClockFadingIcon className="text-blue-700" />
         {row.original.duration
           ? formatDuration(row.original.duration)
-          : "No duration"}
+          : "Tidak ada durasi"}
       </Badge>
     ),
   },

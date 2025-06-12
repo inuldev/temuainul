@@ -31,11 +31,13 @@ export const AgentsView = () => {
         columns={columns}
         onRowClick={(row) => router.push(`/agents/${row.id}`)}
       />
-      <DataPagination
-        page={filters.page}
-        totalPages={data.totalPages}
-        onPageChange={(page) => setFilters({ page })}
-      />
+      {data.totalPages > 1 && (
+        <DataPagination
+          page={filters.page}
+          totalPages={data.totalPages}
+          onPageChange={(page) => setFilters({ page })}
+        />
+      )}
       {data.items.length === 0 && (
         <EmptyState
           title="Belum Ada Agensi"
