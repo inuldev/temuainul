@@ -76,7 +76,7 @@ export const AgentIdView = ({ agentId }: Props) => {
           onEdit={() => setUpdateAgentDialogOpen(true)}
           onRemove={handleRemoveAgent}
         />
-        <div className="bg-white rounded-lg border">
+        <div className="bg-card text-card-foreground rounded-lg border">
           <div className="px-4 py-5 gap-y-5 flex flex-col col-span-5">
             <div className="flex items-center gap-x-3">
               <GeneratedAvatar
@@ -90,12 +90,12 @@ export const AgentIdView = ({ agentId }: Props) => {
               variant="outline"
               className="flex items-center gap-x-2 [&>svg]:size-4"
             >
-              <VideoIcon className="text-blue-700" />
+              <VideoIcon className="text-blue-700 dark:text-blue-400" />
               {data.meetingCount} Pertemuan
             </Badge>
             <div className="flex flex-col gap-y-4">
               <p className="text-lg font-medium">Instruksi</p>
-              <p className="text-neutral-800">{data.instructions}</p>
+              <p className="text-muted-foreground">{data.instructions}</p>
             </div>
           </div>
         </div>

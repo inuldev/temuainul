@@ -33,7 +33,7 @@ export const UpgradeView = () => {
         </Button>
         <div>
           <h1 className="text-2xl md:text-3xl font-bold flex items-center gap-2">
-            <StarIcon className="h-8 w-8 text-yellow-500" />
+            <StarIcon className="h-8 w-8 text-yellow-500 dark:text-yellow-400" />
             Premium Features
           </h1>
           <p className="text-muted-foreground">
@@ -75,7 +75,7 @@ export const UpgradeView = () => {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <CheckCircleIcon className="h-5 w-5 text-green-600" />
+              <CheckCircleIcon className="h-5 w-5 text-green-600 dark:text-green-400" />
               Fitur Premium yang Akan Datang
             </CardTitle>
             <CardDescription>
@@ -123,7 +123,7 @@ export const UpgradeView = () => {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <StarIcon className="h-5 w-5 text-yellow-500" />
+              <StarIcon className="h-5 w-5 text-yellow-500 dark:text-yellow-400" />
               Mengapa Premium?
             </CardTitle>
             <CardDescription>

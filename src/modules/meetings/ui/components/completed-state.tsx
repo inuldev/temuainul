@@ -27,33 +27,33 @@ export const CompletedState = ({ data }: Props) => {
   return (
     <div className="flex flex-col gap-y-4">
       <Tabs defaultValue="summary">
-        <div className="bg-white rounded-lg border px-3">
+        <div className="bg-card text-card-foreground rounded-lg border px-3">
           <ScrollArea>
-            <TabsList className="p-0 bg-background justify-start rounded-none h-13">
+            <TabsList className="p-0 bg-transparent text-muted-foreground justify-start rounded-none h-13">
               <TabsTrigger
                 value="summary"
-                className="text-muted-foreground rounded-none bg-background data-[state=active]:shadow-none border-b-2 border-transparent data-[state=active]:border-b-primary data-[state=active]:text-accent-foreground h-full hover:text-accent-foreground"
+                className="rounded-none bg-transparent text-muted-foreground data-[state=active]:shadow-none border-b-2 border-transparent data-[state=active]:border-b-primary data-[state=active]:text-foreground h-full hover:text-foreground transition-colors"
               >
                 <BookOpenTextIcon />
                 Summary
               </TabsTrigger>
               <TabsTrigger
                 value="transcript"
-                className="text-muted-foreground rounded-none bg-background data-[state=active]:shadow-none border-b-2 border-transparent data-[state=active]:border-b-primary data-[state=active]:text-accent-foreground h-full hover:text-accent-foreground"
+                className="rounded-none bg-transparent text-muted-foreground data-[state=active]:shadow-none border-b-2 border-transparent data-[state=active]:border-b-primary data-[state=active]:text-foreground h-full hover:text-foreground transition-colors"
               >
                 <FileTextIcon />
                 Transcript
               </TabsTrigger>
               <TabsTrigger
                 value="recording"
-                className="text-muted-foreground rounded-none bg-background data-[state=active]:shadow-none border-b-2 border-transparent data-[state=active]:border-b-primary data-[state=active]:text-accent-foreground h-full hover:text-accent-foreground"
+                className="rounded-none bg-transparent text-muted-foreground data-[state=active]:shadow-none border-b-2 border-transparent data-[state=active]:border-b-primary data-[state=active]:text-foreground h-full hover:text-foreground transition-colors"
               >
                 <FileVideoIcon />
                 Recording
               </TabsTrigger>
               <TabsTrigger
                 value="chat"
-                className="text-muted-foreground rounded-none bg-background data-[state=active]:shadow-none border-b-2 border-transparent data-[state=active]:border-b-primary data-[state=active]:text-accent-foreground h-full hover:text-accent-foreground"
+                className="rounded-none bg-transparent text-muted-foreground data-[state=active]:shadow-none border-b-2 border-transparent data-[state=active]:border-b-primary data-[state=active]:text-foreground h-full hover:text-foreground transition-colors"
               >
                 <SparklesIcon />
                 Ask AI
@@ -69,7 +69,7 @@ export const CompletedState = ({ data }: Props) => {
           <Transcript meetingId={data.id} />
         </TabsContent>
         <TabsContent value="recording">
-          <div className="bg-white rounded-lg border p-x-4 p-y-5">
+          <div className="bg-card text-card-foreground rounded-lg border px-4 py-5">
             <video
               src={data.recordingUrl!}
               className="w-full rounded-lg"
@@ -78,13 +78,13 @@ export const CompletedState = ({ data }: Props) => {
           </div>
         </TabsContent>
         <TabsContent value="summary">
-          <div className="bg-white rounded-lg border">
+          <div className="bg-card text-card-foreground rounded-lg border">
             <div className="px-4 py-5 gap-y-5 flex flex-col col-span-5">
               <h2 className="text-2xl font-medium capitalize">{data.name}</h2>
               <div className="flex gap-x-2 items-center">
                 <Link
                   href={`/agents/${data.agent.id}`}
-                  className="flex items-center gap-x-2 underline underline-offset-4 capitalize"
+                  className="flex items-center gap-x-2 underline underline-offset-4 capitalize hover:text-primary dark:hover:text-primary-dark"
                 >
                   <GeneratedAvatar
                     variant="botttsNeutral"
@@ -93,7 +93,9 @@ export const CompletedState = ({ data }: Props) => {
                   />
                   {data.agent.name}
                 </Link>{" "}
-                <p>{data.startedAt ? formatDateLong(data.startedAt) : ""}</p>
+                <p className="text-muted-foreground">
+                  {data.startedAt ? formatDateLong(data.startedAt) : ""}
+                </p>
               </div>
               <div className="flex gap-x-2 items-center">
                 <SparklesIcon className="size-4" />
@@ -103,7 +105,7 @@ export const CompletedState = ({ data }: Props) => {
                 variant="outline"
                 className="flex items-center gap-x-2 [&>svg]:size-4"
               >
-                <ClockFadingIcon className="text-blue-700" />
+                <ClockFadingIcon className="text-blue-700 dark:text-blue-400" />
                 {data.duration
                   ? formatDuration(data.duration)
                   : "Tidak ada durasi"}
@@ -124,7 +126,7 @@ export const CompletedState = ({ data }: Props) => {
                       <h4 className="text-base font-medium mb-6" {...props} />
                     ),
                     p: (props) => (
-                      <p className=" mb-6 leading-relaxed" {...props} />
+                      <p className="mb-6 leading-relaxed text-sm" {...props} />
                     ),
                     ul: (props) => (
                       <ul className="list-disc list-inside mb-6" {...props} />
@@ -135,19 +137,19 @@ export const CompletedState = ({ data }: Props) => {
                         {...props}
                       />
                     ),
-                    li: (props) => <li className="mb-1" {...props} />,
+                    li: (props) => <li className="mb-1 text-sm" {...props} />,
                     strong: (props) => (
                       <strong className="font-semibold" {...props} />
                     ),
                     code: (props) => (
                       <code
-                        className="bg-gray-100 px-1 py-0.5 rounded"
+                        className="bg-muted px-1 py-0.5 rounded text-sm"
                         {...props}
                       />
                     ),
                     blockquote: (props) => (
                       <blockquote
-                        className="border-l-4 pl-4 italic my-4"
+                        className="border-l-4 border-border pl-4 italic my-4 text-muted-foreground"
                         {...props}
                       />
                     ),
