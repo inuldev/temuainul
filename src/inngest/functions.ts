@@ -5,31 +5,12 @@ import { createAgent, openai, TextMessage } from "@inngest/agent-kit";
 import { db } from "@/db";
 import { inngest } from "@/inngest/client";
 import { agents, meetings, user } from "@/db/schema";
+import { MEETING_SUMMARIZER_PROMPT } from "@/lib/ai-prompts";
 import { StreamTranscriptItem } from "@/modules/meetings/types";
 
 const summarizer = createAgent({
   name: "summarizer",
-  system: `
-    You are an expert summarizer. You write readable, concise, simple content. You are given a transcript of a meeting and you need to summarize it.
-
-Use the following markdown structure for every output:
-
-### Overview
-Provide a detailed, engaging summary of the session's content. Focus on major features, user workflows, and any key takeaways. Write in a narrative style, using full sentences. Highlight unique or powerful aspects of the product, platform, or discussion.
-
-### Notes
-Break down key content into thematic sections with timestamp ranges. Each section should summarize key points, actions, or demos in bullet format.
-
-Example:
-#### Section Name
-- Main point or demo shown here
-- Another key insight or interaction
-- Follow-up tool or explanation provided
-
-#### Next Section
-- Feature X automatically does Y
-- Mention of integration with Z
-  `.trim(),
+  system: MEETING_SUMMARIZER_PROMPT,
   model: openai({ model: "gpt-4o", apiKey: process.env.OPENAI_API_KEY! }),
 });
 
@@ -96,7 +77,7 @@ export const meetingsProcessing = inngest.createFunction(
     });
 
     const { output } = await summarizer.run(
-      "Summarize the following transcript" +
+      "Ringkas transkrip meeting berikut dalam bahasa Indonesia: " +
         JSON.stringify(transcriptWithSpeakers)
     );
 

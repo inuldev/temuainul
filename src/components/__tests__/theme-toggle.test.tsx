@@ -39,14 +39,15 @@ describe("ThemeToggle", () => {
     const button = screen.getByRole("button");
     expect(button).toBeInTheDocument();
     expect(button).toHaveAttribute("aria-haspopup", "menu");
+    expect(button).toHaveAttribute("aria-label", "Toggle theme");
   });
 
-  it("has correct accessibility attributes", () => {
+  it("can be found by accessible name", () => {
     render(<ThemeToggle />);
 
-    const button = screen.getByRole("button");
+    const button = screen.getByLabelText("Toggle theme");
+    expect(button).toBeInTheDocument();
     expect(button).toHaveAttribute("aria-haspopup", "menu");
-    expect(screen.getByText("Toggle theme")).toBeInTheDocument();
   });
 
   it("renders sun and moon icons", () => {

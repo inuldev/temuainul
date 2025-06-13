@@ -21,6 +21,7 @@ import {
 
 import { AgentGetOne } from "../../types";
 import { agentsInsertSchema } from "../../schemas";
+import { InstructionHelper } from "./instruction-helper";
 
 interface AgentFormProps {
   onSuccess?: () => void;
@@ -109,7 +110,10 @@ export const AgentForm = ({
             <FormItem>
               <FormLabel>Nama</FormLabel>
               <FormControl>
-                <Input {...field} placeholder="e.g Guru Matematika" />
+                <Input
+                  {...field}
+                  placeholder="contoh: Asisten Customer Service"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -124,10 +128,12 @@ export const AgentForm = ({
               <FormControl>
                 <Textarea
                   {...field}
-                  placeholder="Anda adalah asisten matematika yang membantu menjawab pertanyaan dan membantu tugas dan rumus"
+                  placeholder="Anda adalah asisten customer service yang ramah dan membantu. Selalu berikan respons yang sopan, informatif, dan solution-oriented. Gunakan bahasa Indonesia yang natural dan mudah dipahami."
+                  rows={4}
                 />
               </FormControl>
               <FormMessage />
+              <InstructionHelper />
             </FormItem>
           )}
         />
